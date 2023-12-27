@@ -1,0 +1,90 @@
+
+<p-toast>
+</p-toast>
+
+ <div class="home">
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="hero" *ngIf="!isLoading">
+    <p-table #dt1 [value]="items" styleClass="p-datatable-gridlines" [tableStyle]="{ }" class="shadow-3 transition-duration-500 hover:shadow-1" [globalFilterFields]="['item_code', 'item_name', 'unit_code', 'timestamp.date']" id="myTable" >
+      <ng-template pTemplate="caption">
+          <h1 class="text-center title">Item Data</h1>
+        <div class="flex">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-primary mr-2 border-round-lg" (click)="showDialog()"></button>
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="onGlobalFilter(dt1, $event)" placeholder="Search keyword" />
+            </span>
+        </div>
+     </ng-template>
+      <ng-template pTemplate="header">
+          <tr class="text-base">
+              <th>Item Code</th>
+              <th> Item Name </th>
+              <th>Price</th>
+              <th>Timestamp</th>
+              <th>Unit</th>
+              <th>Action</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr>
+              <td data-label="Item Code">{{ product.item_code}}</td>
+              <td data-label="Item Name">{{ product.item_name }}</td>
+              <td data-label="Price">{{ product.price }}</td>
+              <td data-label="Timestamp">{{ product.timestamp.date   | date: 'MM/dd/yyyy' }}</td>
+              <td data-label="Unit">{{ product.unit_code }}</td>
+              <td data-label="Action">
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2 border-round-lg" (click)="onSelect(product)"></button>
+              </td>
+          </tr>
+      </ng-template>
+    </p-table>
+  </div>
+ </div>
+ 
+
+  <p-dialog header="Edit Customer" [(visible)]="visible" [modal]="true" [style]="{ width: '40vw' }" [draggable]="false" [resizable]="false" [maximizable]="true">
+      
+    <div class="grid">
+      <div class="col-12 p-fluid">
+        
+        <form  [formGroup]="itemForm" (ngSubmit)="onSubmit()">  
+            <div class="field">
+              <label htmlFor="itemCode" class="font-semibold" >Item Code</label>
+              <input pInputText id="itemCode" ngModel name="itemCode" formControlName="itemCode" autocomplete="off">
+            </div>
+      
+            <div class="field">
+              <label htmlFor="itemName" class="font-semibold">Item Name</label>
+              <input pInputText id="itemName" ngModel name="itemName" formControlName="itemName" autocomplete="off">
+            </div>
+    
+            <div class="field">
+              <label for="price" class="font-semibold">Price</label>
+              <p-inputNumber mode="decimal" inputId="price" [useGrouping]="false" name="price" formControlName="price" autocomplete="off"></p-inputNumber>
+            </div>
+    
+            <div class="field">
+              <label for="" class="font-semibold">Unit of Measurement</label>
+               
+                <p-dropdown [options]="unit"  optionLabel="unit_code" [showClear]="true" placeholder="Select Unit" ngModel name="unit" formControlName="unit" appendTo="body">
+                  <ng-template let-country pTemplate="item" class="bg-black">
+                      <div class="flex align-items-center">
+                          <div>{{ country.unit_code }}</div>
+                      </div>
+                  </ng-template>
+               </p-dropdown>
+            </div>
+    
+            <div class="field">
+              <p-button label="Submit" type="submit"  class="w-full" [disabled]="!itemForm.valid"></p-button>
+            </div>
+        </form>
+
+      </div> 
+    </div>
+
+  </p-dialog>
+  

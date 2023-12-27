@@ -1,0 +1,49 @@
+@import url('https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa21JNUVBM29SR3oweWJzVkI2clpyU2ZQQzJQQXxBQ3Jtc0traDJzbV9VcGtMVE1zZVpuRDRIM2NGWnpjazZyQzMzNkx3c0hxdmIzaExZR3hpODdKUzBUeVlSbDRVeURaRnUtVkg4LWhhRnpxR0VHTXRUTXo5UmJCX3NBOEoyRXBQWDVGS2lGZFpuZUVLNjFmaHp3Zw&q=https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DPoppins%3Awght%40400%3B500%26display%3Dswap%27%29%3B&v=oF28ns9eVdc');
+
+
+body {
+    /* font-family: 'Poppins', sans-serif; */
+    background: rgb(243, 244, 246);
+}
+
+.box-area {
+    width: 930px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.right-box {
+    padding: 40px 30px 40px 40px;
+}
+
+::placeholder {
+    font-size: 16px;
+}
+
+.forgot-password{
+    text-align: right;
+    letter-spacing: .5px;
+    cursor: pointer;
+    transition: .3s all ease;
+    color: #0066ff;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px){
+
+    .box-area {
+        margin: 0 10px
+    }
+
+    .left-box {
+        height: 100px;
+        overflow: hidden;
+        background-position: center;
+    }
+}
+
+
+
+
+

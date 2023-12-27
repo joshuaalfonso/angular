@@ -1,0 +1,93 @@
+
+  <!-- Bootstrap CSS -->
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom pl-5 pr-5">
+    
+      <span class="navbar-brand" href="#">Logo</span>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link" routerLink="/customer">Customer <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link" routerLink="/item">Item</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link" routerLink="/order-details">Order Details</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link" routerLink="/users">Users</a>
+          </li>
+
+
+
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link">{{userName}}</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link cursor-pointer" (click)="onLogout()">Logout</a>
+          </li>
+        </div>
+      </div>
+    </nav> -->
+    <!-- d-flex justify-content-between align-items-center -->
+    <nav class="">
+      <div class="hamburger nav-toggle">
+        <span><i class="pi pi-times nav-close" [class.fade-close]="navOpen"></i></span>
+        <span (click)="openNav()"><i class="pi pi-bars nav-open" [class.fade-open]="navOpen"></i></span>
+      </div>
+      <div class="logo">
+        <span class="navbar-brand">Logo</span>
+      </div>
+
+      <div class="nav-list" [class.nav-list-class]="navOpen">
+        <div class="nav-links">
+          <li routerLinkActive="active" *ngIf="isAuthenticated" (click)="closeNav()">
+            <a routerLink="/customer">Customer <span class="sr-only">(current)</span></a>
+          </li>
+          <li routerLinkActive="active" *ngIf="isAuthenticated" (click)="closeNav()">
+            <a routerLink="/item">Item</a>
+          </li>
+          <li routerLinkActive="active" *ngIf="isAuthenticated" (click)="closeNav()">
+            <a routerLink="/order-details">Order Details</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated && isAdmin" (click)="closeNav()">
+            <a class="nav-link" routerLink="/users">Users</a>
+          </li>
+        </div>
+      </div>
+
+      <div class="user user-dropdown">
+        <i class="pi pi-user"></i>
+        <span class="userName">{{userName}}</span> 
+        <i class="pi pi-angle-down arrow-down"></i>
+        <ul class="dropdown">
+          <li routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link cursor-pointer" routerLink="/password"><i class="pi pi-lock"></i>&nbsp; Change Password</a>
+          </li>
+          <!-- <hr> -->
+          <li routerLinkActive="active" *ngIf="isAuthenticated">
+            <a class="nav-link cursor-pointer" (click)="onLogout()"><i class="pi pi-sign-out"></i>&nbsp; Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <script src="../assets/script.js"></script>
+
+
+ 
+
+    
+  
+
+  
+ 
+
+
+
+

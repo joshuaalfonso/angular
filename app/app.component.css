@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(243, 244, 246);
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}   
+
+
+ 

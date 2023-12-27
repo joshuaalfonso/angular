@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  @keyframes floating {
+      0% { transform: translate(0,  0px); }
+      50% { transform: translate(0, 5px); }
+      100% { transform: translate(0, 0px); }    
+  }
+
+  .floating {
+      animation: floating 4s ease-in-out infinite;
+  }
+</style>
+<body>
+
+  <!-- <p-toast>
+</p-toast> -->
+
+<!-- <div class="flex justify-content-center align-items-center min-h-screen">
+      <div class="col-12 p-6 p-fluid">
+        
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">  
+            <div class="text-center mb-4">
+              <h1>Log In</h1>
+            </div>
+            <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+            <div class="field">
+              <label class="font-semibold" >Username</label>
+              <input pInputText  autocomplete="off" formControlName="username" autocomplete="off">
+            </div>
+      
+            <div class="field">
+              <label class="font-semibold">Password</label>
+              <p-password formControlName="password" [feedback]="false" autocomplete="off"></p-password>
+            </div>
+        
+            <div class="field">
+              <p-button label="Submit" type="submit"  class="w-full" [disabled]="!loginForm.valid"></p-button>
+            </div>
+        </form>
+
+      </div> 
+</div> -->
+<p-toast></p-toast>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="row bg-white rounded-5 p-3 box-area">
+
+    <div class="col-md-6 p-3 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" >
+      <div class="featured-image mb-1">
+        <img src="../assets/2.png" class="img-fluid floating" style="width: 350px;">
+      </div>
+      <!-- <p class="text-white fs-4" style="font-family: 'Courier New', 'Courier New', Courier, monospace; font-weight: 600;">Access Your Account</p>
+      <small class="text-white text-wrap text-center" style="width: 17rem; font-family: 'Courier New', 'Courier New', Courier, monospace;">The Gateway to Your Personal Dashboard.</small> -->
+    </div>
+
+    <div class="col-md-6 right-box">
+      <div class="row">
+
+        <div class="header-text mb-4">
+          <p style="font-size: 25px; letter-spacing: 1px; font-weight: 800; text-align: center;">User Login</p>
+          <!-- <p style="letter-spacing: 1px;">We are happy to have you back.</p> -->
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">  
+          <div class="input-group mb-3">
+            <input pInputText formControlName="username" autocomplete="off" class="form-control form-control-lg bg-ligt fs-6" placeholder="Username">
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" formControlName="password" autocomplete="off" class="form-control form-control-lg bg-ligt fs-6" placeholder="Password">
+          </div>
+          <p class="forgot-password">Forgot password?</p>
+          <div class="input-group mb-3">
+            <button class="btn btn-lg btn-primary w-100 fs-6 " style="font-weight: 600;" [disabled]="!loginForm.valid">Login</button>
+          </div>   
+        </form>
+            
+      </div>
+    </div>
+  </div>
+</div>
+  
+</body>
+</html>
+
+
+
+
+
+
+

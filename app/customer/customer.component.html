@@ -1,0 +1,80 @@
+<p-toast></p-toast>
+
+<div class="home">
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="hero" *ngIf="!isLoading">
+    <p-table #dt1 [value]="customers" styleClass="p-datatable-gridlines" [tableStyle]="{ }" class="shadow-3 transition-duration-500 hover:shadow-1" [globalFilterFields]="['customer_name', 'address', 'contact', 'email']" id="myTable" >
+      <ng-template pTemplate="caption">
+          <h1 class="text-center title">Customer Data</h1>
+        <div class="flex">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-primary mr-2 border-round-lg" (click)="showDialog()"></button>
+            <span class="p-input-icon-left ml-auto ">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="onGlobalFilter(dt1, $event)" placeholder="Search keyword" class="input-search">
+            </span>
+        </div>
+     </ng-template> 
+      <ng-template pTemplate="header">
+          <tr class="text-base">
+              <th> Name </th>
+              <th> Address </th>
+              <th> Contact </th>
+              <th> Email </th>
+              <th>Action</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-customer>
+          <tr class="tbody">
+              <td data-label="Name">{{ customer.customer_name}}</td>
+              <td data-label="Address">{{ customer.address}}</td>
+              <td data-label="Contact">{{ customer.contact }}</td>
+              <td data-label="Email">{{ customer.email }}</td>
+              <td data-label="Action">
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2 border-round-lg" (click)="onSelect(customer)"></button>
+              </td>
+          </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+
+    <p-dialog header="{{formHeader}}" [(visible)]="visible" [modal]="true" [style]="{width: '500px'}" [draggable]="false" [resizable]="false">
+      
+      <div class="grid container">
+        <div class="col-12 p-fluid">
+          
+          <form  [formGroup]="customerForm" (ngSubmit)="onSubmit()">  
+            <div class="field">
+              <label htmlFor="customer_name" class="font-semibold" >Name</label>
+              <input pInputText id="customer_name" ngModel name="customer_name" formControlName="customer_name" autocomplete="off">
+            </div>
+      
+            <div class="field">
+              <label htmlFor="address" class="font-semibold">Address</label>
+              <input pInputText id="address" ngModel name="address" formControlName="address" autocomplete="off">
+            </div>
+    
+            <div class="field">
+              <label htmlFor="contact" class="font-semibold">Contact</label>
+              <input pInputText id="contact" ngModel name="contact" formControlName="contact" autocomplete="off">
+            </div>
+            <div class="field">
+              <label htmlFor="email" class="font-semibold">Email</label>
+              <input pInputText id="email" ngModel name="email" formControlName="email" autocomplete="off">
+            </div>
+    
+            <div class="field">
+              <p-button label="Submit" type="submit"  class="w-full" [disabled]="!customerForm.valid"></p-button>
+            </div>
+          </form>
+          
+  
+        </div> 
+      </div>
+
+    </p-dialog>
+
+
